@@ -1,0 +1,1 @@
+export type PromodoroMode = 'focus' | 'shortBreak' | 'longBreak'
