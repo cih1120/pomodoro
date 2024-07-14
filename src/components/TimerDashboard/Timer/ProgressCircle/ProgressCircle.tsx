@@ -4,22 +4,25 @@ import { cn } from '@/lib/utils'
 import { cva } from 'class-variance-authority'
 // import { useTimer } from "@/src/hooks/useTimer";
 
-const ProgressCircle = () => {
-    // const { state, dispatch } = useTimeDashboard();
-    // const { isRunning, isPausing, mode } = state;
-    // const { remainingSeconds, progressPercentage } = useTimer();
+const ProgressCircle = ({
+    remainingSeconds,
+    progressPercentage,
+}: {
+    remainingSeconds: number
+    progressPercentage: number
+}) => {
+    // const { remainingSeconds, progressPercentage, state } = useTimer();
     const state = 'isRunning'
-    const progressPercentage = 50
-    const remainingSeconds = 500
+    // const progressPercentage =
+    // const progressPercentage = Math.min((remainingSeconds / state.timerDurations[mode]) * 100, 100);
+    // const remainingSeconds = 500
 
     return (
         <div className="relative">
             <ProgressRing percent={progressPercentage} />
             <p
                 className={cn([
-                    state == 'isRunning'
-                        ? 'text-accent'
-                        : 'text-accent-light',
+                    state == 'isRunning' ? 'text-accent' : 'text-accent-light',
                     'absolute-center text-4xl font-black',
                 ])}
             >
@@ -71,7 +74,7 @@ const ProgressRing = ({ percent }: { percent: number }) => {
                 cy="120"
             />
             <circle
-                className="text-accent origin-center translate-x-[-20px] translate-y-[20px] -rotate-90"
+                className="origin-center translate-x-[-20px] translate-y-[20px] -rotate-90 text-accent"
                 strokeWidth="20"
                 strokeDasharray={circumference}
                 strokeDashoffset={setProgress}

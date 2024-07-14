@@ -5,25 +5,27 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-    'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+    'inline-flex items-center text-font justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none',
     {
         variants: {
             variant: {
-                default: 'bg-primary text-font hover:bg-primary-dark',
+                default:
+                    'bg-primary hover:bg-primary-dark  disabled:opacity-50',
                 destructive:
-                    'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+                    'bg-destructive hover:bg-destructive/90  disabled:opacity-50',
                 outline:
                     'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
                 secondary:
-                    'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-                ghost: 'hover:bg-accent hover:text-accent-foreground',
-                link: 'text-accent underline-offset-4 hover:underline',
+                    'bg-secondary hover:bg-secondary/80  disabled:opacity-50',
+                ghost: 'hover:bg-accent hover:text-font',
+                link: 'text-accent-foreground underline-offset-4 hover:underline',
             },
             size: {
                 default: 'text-sm h-10 px-4 py-2',
                 sm: 'text-sm h-9 rounded-md px-3',
-                lg: 'rounded-md px-5 py-2.5 text-lg',
-                icon: 'h-10 w-10',
+                md: 'text-xl h-9 rounded-md px-3',
+                lg: 'rounded-lg px-5 py-3 text-2xl',
+                icon: 'h-8 w-8',
             },
             shadow: {
                 none: '',
@@ -31,7 +33,7 @@ const buttonVariants = cva(
             },
             font: {
                 default: '',
-                EBGaramond: 'font-EBGaramond',
+                EBGaramond: 'font-EBGaramond italic',
             },
         },
         defaultVariants: {
