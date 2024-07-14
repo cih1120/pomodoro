@@ -5,34 +5,34 @@
 
 @layer base {
     :root {
-        --background: 28, 60%, 88%;
-        --foreground: 26, 75%, 72%;
+        --background: 28 60% 88%;
+        --foreground: 26 75% 72%;
 
-        --card: 28, 60%, 88%;
-        --card-foreground: 26, 75%, 72%;
+        --card: 28 60%, 88%;
+        --card-foreground: 26 75%, 72%;
 
-        --popover: 0, 0%, 100%;
-        --popover-foreground: 222.2, 84% 4.9%;
+        --popover: 0, 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
 
         --primary: 357 72% 65%;
         --primary-dark: 357 55% 56%;
         --primary-light: 357 58% 70%;
 
-        --secondary: 47, 56%, 44%;
-        --secondary-dark: 47, 87%, 29%;
-        --secondary-light: 47, 42%, 51%;
+        --secondary: 47 56%, 44%;
+        --secondary-dark: 47 87%, 29%;
+        --secondary-light: 47 42%, 51%;
 
-        --muted: 134, 19%, 50%;
-        --muted-dark: 134, 26%,, 39%;
-        --muted-light: 134, 13%, 59%;
+        --muted: 134 19% 50%;
+        --muted-dark: 134 26% 39%;
+        --muted-light: 134 13% 59%;
 
-        --accent: 11, 45%, 15%;
-        --accent-foreground: 11, 14%, 44%;
+        --accent: 11 45% 15%;
+        --accent-foreground: 11 14% 44%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 210 40% 98%;
 
-        --border: 357, 72%, 65%;
+        --border: 11 45% 15%;
         --input: 214.3 31.8% 91.4%;
         --ring: 222.2 84% 4.9%;
         --font: 0 0% 100%;
@@ -88,6 +88,6 @@
 
 @layer utilities {
     .absolute-center {
-      @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform;
+        @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform;
     }
-  }
+}
