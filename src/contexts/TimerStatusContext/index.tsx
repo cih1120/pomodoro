@@ -4,6 +4,7 @@ import reducer from './reducer'
 
 const initialState: ITimerStatusContext = {
     mode: 'focus',
+    previousFinishModes: [],
     status: 'default',
     runningTask: '',
 }

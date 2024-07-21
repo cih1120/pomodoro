@@ -2,10 +2,7 @@ import { TimerMode } from '@/lib/types'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-export default function useTimer(
-    mode: TimerMode,
-    handleTimerFinish: () => void
-) {
+export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const { state, dispatch } = useTimerStatusContext()
 
     const modeDurations: Record<TimerMode, number> = {
@@ -38,7 +35,7 @@ export default function useTimer(
     }
 
     const setKonamiSpeed = () => {
-        setSpeedMultiplier(10)
+        setSpeedMultiplier(2)
     }
 
     const handleStart = () => {
@@ -55,6 +52,11 @@ export default function useTimer(
     const handleRestart = () => {
         dispatch({ type: 'setStatus', payload: 'default' })
         initializeTimer()
+    }
+
+    const handleTimerFinish = () => {
+        dispatch({ type: 'setFinish' })
+        handleFinish()
     }
 
     useEffect(() => {

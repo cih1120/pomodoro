@@ -5,14 +5,14 @@ import useTimerStatusContext from '@/contexts/TimerStatusContext'
 
 export default function Timer() {
     const { state, dispatch } = useTimerStatusContext()
-    const handleTimerFinish = () => {}
+    const handleFinish = () => {}
     const {
         handleStart,
         handlePause,
         handleRestart,
         remainingSeconds,
         progressPercentage,
-    } = useTimer(state.mode, handleTimerFinish)
+    } = useTimer(state.mode, handleFinish)
 
     return (
         <div className="flex flex-col gap-2">
