@@ -4,9 +4,13 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 import timerStartSound from '@/assets/source/timerStart.mp3'
 import timerDoneSound from '@/assets/source/timerDone.mp3'
+import usePromodoroContext from '@/contexts/PromodoroContext'
+import { ITask } from '@/lib/types'
 
 export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const { state, dispatch } = useTimerStatusContext()
+    const { state: pomodoroState, dispatch: pomodoroDispatch } =
+        usePromodoroContext()
 
     const timerStartAudio = useRef(new Audio(timerStartSound))
     const timerDoneAudio = useRef(new Audio(timerDoneSound))
@@ -71,6 +75,24 @@ export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const handleTimerFinish = () => {
         playSound(timerDoneAudio.current)
         dispatch({ type: 'setFinish' })
+
+        if (state.mode === 'focus') {
+            const taskID =
+                typeof state.runningTask === 'string'
+                    ? (pomodoroDispatch({
+                          type: 'setNewTask',
+                          payload: state.runningTask,
+                      }),
+                      pomodoroState.tasks.find(
+                          (task) => task.taskName === state.runningTask
+                      )?.taskName)
+                    : (state.runningTask as ITask).taskId
+
+            if (taskID) {
+                pomodoroDispatch({ type: 'addTaskPomodoro', payload: taskID })
+            }
+        }
+
         handleFinish()
     }
 

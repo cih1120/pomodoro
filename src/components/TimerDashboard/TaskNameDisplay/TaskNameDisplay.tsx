@@ -35,10 +35,6 @@ export default function TaskNameDisplay() {
         }
     }, [TimerState.status])
 
-    // useEffect(() => {
-    //     TimerDispatch({ type: 'setRunningTimer', payload: inputValue })
-    // }, [inputValue])
-
     return (
         <div className="mx-auto h-9 w-full max-w-xl">
             {taskName ? (

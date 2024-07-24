@@ -12,8 +12,6 @@ const reducer = (state: ITimerStatusContext, action: TIMER_ACTIONS) => {
         case 'setStatus':
             return produce(state, (draft) => {
                 draft.status = action.payload
-                if (draft.runningTask) {
-                }
             })
         case 'setRunningTimer':
             return produce(state, (draft) => {
