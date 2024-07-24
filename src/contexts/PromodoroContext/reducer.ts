@@ -28,7 +28,7 @@ const reducer = (state: IPromodoroContext, action: PROMODORO_ACTIONS) => {
                     draft.tasks[index] = action.payload
                 }
             })
-        case 'addTaskPromodoro':
+        case 'addTaskPomodoro':
             return produce(state, (draft) => {
                 const task = draft.tasks.find(
                     (t) => t.taskId === action.payload
