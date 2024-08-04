@@ -4,7 +4,7 @@ import ProgressCircle from './ProgressCircle'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
 
 export default function Timer() {
-    const { state, dispatch } = useTimerStatusContext()
+    const { state } = useTimerStatusContext()
     const handleFinish = () => {}
     const {
         handleStart,

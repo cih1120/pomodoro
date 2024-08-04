@@ -1,38 +1,45 @@
-import React, { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
-import { IPromodoroContext, PROMODORO_ACTIONS } from "./types";
-import reducer from "./reducer";
+import React, {
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useReducer,
+} from 'react'
+import { IPromodoroContext, PROMODORO_ACTIONS } from './types'
+import reducer from './reducer'
 
-const LOCAL_STORAGE_KEY = 'promodoro-storage';
+const LOCAL_STORAGE_KEY = 'promodoro-storage'
 
 const initialState: IPromodoroContext = {
-  tasks: [],
-};
+    tasks: [],
+    tempRemovedTasks: [],
+}
 
 const PromodoroContext = createContext<{
-  state: IPromodoroContext;
-  dispatch: React.Dispatch<PROMODORO_ACTIONS>;
+    state: IPromodoroContext
+    dispatch: React.Dispatch<PROMODORO_ACTIONS>
 }>({
-  state: initialState,
-  dispatch: () => null,
-});
+    state: initialState,
+    dispatch: () => null,
+})
 
 export const PromodoroProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(reducer, initialState, () => {
-    const localData = localStorage.getItem(LOCAL_STORAGE_KEY);
-    return localData ? JSON.parse(localData) : initialState;
-  });
+    const [state, dispatch] = useReducer(reducer, initialState, () => {
+        const localData = localStorage.getItem(LOCAL_STORAGE_KEY)
+        return localData ? JSON.parse(localData) : initialState
+    })
 
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-  }, [state]);
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state))
+    }, [state])
 
-  return (
-    <PromodoroContext.Provider value= {{ state, dispatch }}>
-    { children }
-  </PromodoroContext.Provider>
-  );
-};
+    return (
+        <PromodoroContext.Provider value={{ state, dispatch }}>
+            {children}
+        </PromodoroContext.Provider>
+    )
+}
 
-const usePromodoroContext = () => useContext(PromodoroContext);
+const usePromodoroContext = () => useContext(PromodoroContext)
 
-export default usePromodoroContext;
+export default usePromodoroContext

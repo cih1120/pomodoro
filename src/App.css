@@ -82,7 +82,7 @@
         @apply border-border;
     }
     body {
-        @apply bg-background text-accent;
+        @apply overflow-hidden bg-background text-accent;
     }
 }
 

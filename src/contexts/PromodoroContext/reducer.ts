@@ -15,9 +15,15 @@ const reducer = (state: IPromodoroContext, action: PROMODORO_ACTIONS) => {
             })
         case 'removeTask':
             return produce(state, (draft) => {
-                draft.tasks = draft.tasks.filter(
-                    (t) => t.taskId !== action.payload
+                const task = draft.tasks.find(
+                    (t) => t.taskId === action.payload
                 )
+                if (task) {
+                    draft.tasks = draft.tasks.filter(
+                        (t) => t.taskId !== action.payload
+                    )
+                    draft.tempRemovedTasks.push(task)
+                }
             })
         case 'editTask':
             return produce(state, (draft) => {
@@ -35,6 +41,18 @@ const reducer = (state: IPromodoroContext, action: PROMODORO_ACTIONS) => {
                 )
                 if (task) {
                     task.currentPromodoros += 1
+                }
+            })
+        case 'restoreTask':
+            return produce(state, (draft) => {
+                const task = draft.tempRemovedTasks.find(
+                    (t) => t.taskId === action.payload
+                )
+                if (task) {
+                    draft.tasks.push(task)
+                    draft.tempRemovedTasks = draft.tempRemovedTasks.filter(
+                        (t) => t.taskId !== action.payload
+                    )
                 }
             })
         default:
