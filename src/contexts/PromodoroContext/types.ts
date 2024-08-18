@@ -11,3 +11,4 @@ export type PROMODORO_ACTIONS =
     | { type: 'editTask'; payload: ITask }
     | { type: 'addTaskPomodoro'; payload: ITask['taskId'] }
     | { type: 'restoreTask'; payload: ITask['taskId'] }
+    | { type: 'updateTask'; payload: ITask }

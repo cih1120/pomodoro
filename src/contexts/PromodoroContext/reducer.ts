@@ -55,6 +55,15 @@ const reducer = (state: IPromodoroContext, action: PROMODORO_ACTIONS) => {
                     )
                 }
             })
+        case 'updateTask':
+            return produce(state, (draft) => {
+                const index = draft.tasks.findIndex(
+                    (t) => t.taskId === action.payload.taskId
+                )
+                if (index) {
+                    draft.tasks[index] = action.payload
+                }
+            })
         default:
             return state
     }
