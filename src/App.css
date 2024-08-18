@@ -8,7 +8,7 @@
         --background: 28 60% 88%;
         --foreground: 26 75% 72%;
 
-        --card: 28 60%, 88%;
+        --card: 28 55% 91%;
         --card-foreground: 26 75%, 72%;
 
         --popover: 0, 0% 100%;
@@ -41,34 +41,34 @@
     }
 
     .dark {
-        --background: 28, 60%, 88%;
-        --foreground: 26, 75%, 72%;
+        --background: 11 35% 10%;
+        --foreground: 26 75% 72%;
 
-        --card: 28, 60%, 88%;
-        --card-foreground: 26, 75%, 72%;
+        --card: 16 13% 28%;
+        --card-foreground: 26 75%, 72%;
 
-        --popover: 0 0% 100%;
+        --popover: 0, 0% 100%;
         --popover-foreground: 222.2 84% 4.9%;
 
-        --primary: 357, 72%, 65%;
-        --primary-foreground: 210 40% 98%;
-        --primary-light: 357, 58%, 70%;
+        --primary: 5 74% 60%;
+        --primary-dark: 5 86% 66%;
+        --primary-light: 357 58% 70%;
 
-        --secondary: 47, 87%, 29%;
-        --secondary-foreground: 47, 56%, 44%;
-        --secondary-light: 47, 42%, 51%;
+        --secondary: 47 56%, 44%;
+        --secondary-dark: 47 87%, 29%;
+        --secondary-light: 47 42%, 51%;
 
-        --muted: 134, 26%, 39%;
-        --muted-foreground: 134, 19%, 50%;
-        --muted-light: 134, 13%, 59%;
+        --muted: 134 19% 50%;
+        --muted-dark: 134 26% 39%;
+        --muted-light: 134 13% 59%;
 
-        --accent: 11, 45%, 15%;
-        --accent-light: 11, 14%, 44%;
+        --accent: 43 77% 88%;
+        --accent-foreground: 39 75% 76%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 210 40% 98%;
 
-        --border: 357, 72%, 65%;
+        --border: 31 63% 79%;
         --input: 214.3 31.8% 91.4%;
         --ring: 222.2 84% 4.9%;
         --font: 0 0% 100%;
@@ -83,6 +83,23 @@
     }
     body {
         @apply overflow-hidden bg-background text-accent;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-foreground/20;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-md bg-accent/20;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply rounded-md bg-accent/40;
     }
 }
 
