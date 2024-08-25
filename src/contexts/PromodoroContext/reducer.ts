@@ -60,7 +60,7 @@ const reducer = (state: IPromodoroContext, action: PROMODORO_ACTIONS) => {
                 const index = draft.tasks.findIndex(
                     (t) => t.taskId === action.payload.taskId
                 )
-                if (index) {
+                if (index >= 0) {
                     draft.tasks[index] = action.payload
                 }
             })
