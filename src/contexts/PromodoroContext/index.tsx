@@ -26,11 +26,15 @@ const PromodoroContext = createContext<{
 export const PromodoroProvider = ({ children }: { children: ReactNode }) => {
     const [state, dispatch] = useReducer(reducer, initialState, () => {
         const localData = localStorage.getItem(LOCAL_STORAGE_KEY)
-        return localData ? JSON.parse(localData) : initialState
+
+        return localData
+            ? { ...initialState, ...JSON.parse(localData) }
+            : initialState
     })
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state))
+        const { tasks } = state
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }))
     }, [state])
 
     return (
