@@ -1,16 +1,17 @@
 import { ITask, TimerMode, TimerStatus } from '@/lib/types'
 
+export type IRunningTask = { taskId: string } | { taskName: string } | null
 export interface ITimerStatusContext {
     mode: TimerMode
     previousFinishModes: Array<TimerMode>
     status: TimerStatus
-    runningTask: string | ITask
+    runningTask: IRunningTask
 }
 
 export type TIMER_ACTIONS =
     | { type: 'setMode'; payload: TimerMode }
     | { type: 'setStatus'; payload: TimerStatus }
-    | { type: 'setRunningTimer'; payload: string | ITask }
+    | { type: 'setRunningTimer'; payload: IRunningTask }
     | { type: 'setFinish' }
 
 export interface TimerStatusContextType {

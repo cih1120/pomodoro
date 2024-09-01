@@ -27,7 +27,7 @@ export default function TaskInput({
     }, [menuOpen])
 
     const selectTask = () => {
-        dispatch({ type: 'setNewTask', payload: inputValue })
+        dispatch({ type: 'setNewTask', payload: { taskName: inputValue } })
         const latestTask = [...state.tasks].pop()
         if (latestTask) {
             onSelect(latestTask.taskId)

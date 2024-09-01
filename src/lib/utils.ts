@@ -21,3 +21,7 @@ export function formatDate(dateString: Date) {
     const day = String(date.getDate()).padStart(2, '0')
     return `${year}/${month}/${day}`
 }
+
+export function generateTaskID(): string {
+    return Date.now().toString()
+}

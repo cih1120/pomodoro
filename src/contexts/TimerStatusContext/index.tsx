@@ -6,7 +6,7 @@ const initialState: ITimerStatusContext = {
     mode: 'focus',
     previousFinishModes: [],
     status: 'default',
-    runningTask: '',
+    runningTask: null,
 }
 
 const TimerStatusContext = createContext<{

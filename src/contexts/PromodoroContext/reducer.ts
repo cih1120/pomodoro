@@ -1,15 +1,16 @@
 import { produce } from 'immer'
 import { IPromodoroContext, PROMODORO_ACTIONS } from './types'
+import { generateTaskID } from '@/lib/utils'
 
 const reducer = (state: IPromodoroContext, action: PROMODORO_ACTIONS) => {
     switch (action.type) {
         case 'setNewTask':
             return produce(state, (draft) => {
                 draft.tasks.push({
-                    taskId: Date.now().toString(),
-                    taskName: action.payload,
+                    taskId: action.payload.taskId || generateTaskID(),
+                    taskName: action.payload.taskName,
                     expectedPromodoros: 3,
-                    currentPromodoros: 0,
+                    currentPromodoros: action.payload.currentPromodoros || 0,
                     createdAt: new Date(),
                 })
             })

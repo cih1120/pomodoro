@@ -1,11 +1,11 @@
 import { TimerMode } from '@/lib/types'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import timerStartSound from '@/assets/source/timerStart.mp3'
 import timerDoneSound from '@/assets/source/timerDone.mp3'
 import usePromodoroContext from '@/contexts/PromodoroContext'
-import { ITask } from '@/lib/types'
+import { generateTaskID } from '@/lib/utils'
 
 export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const { state, dispatch } = useTimerStatusContext()
@@ -77,19 +77,29 @@ export default function useTimer(mode: TimerMode, handleFinish: () => void) {
         dispatch({ type: 'setFinish' })
 
         if (state.mode === 'focus') {
-            const taskID =
-                typeof state.runningTask === 'string'
-                    ? (pomodoroDispatch({
-                          type: 'setNewTask',
-                          payload: state.runningTask,
-                      }),
-                      pomodoroState.tasks.find(
-                          (task) => task.taskName === state.runningTask
-                      )?.taskName)
-                    : (state.runningTask as ITask).taskId
+            if (state.runningTask && 'taskName' in state.runningTask) {
+                const taskId = generateTaskID()
+                const task = {
+                    taskId,
+                    taskName: state.runningTask.taskName,
+                    currentPromodoros: 1,
+                }
+                pomodoroDispatch({
+                    type: 'setNewTask',
+                    payload: { ...task },
+                })
 
-            if (taskID) {
-                pomodoroDispatch({ type: 'addTaskPomodoro', payload: taskID })
+                dispatch({
+                    type: 'setRunningTimer',
+                    payload: {
+                        taskId,
+                    },
+                })
+            } else if (state.runningTask && 'taskId' in state.runningTask) {
+                pomodoroDispatch({
+                    type: 'addTaskPomodoro',
+                    payload: state.runningTask.taskId,
+                })
             }
         }
 

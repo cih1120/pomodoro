@@ -18,7 +18,7 @@ export default function TaskNameDisplay() {
         const task = state.tasks.find((task) => task.taskId === id)
         if (task) {
             setTaskName(task?.taskName)
-            TimerDispatch({ type: 'setRunningTimer', payload: task })
+            TimerDispatch({ type: 'setRunningTimer', payload: { taskId: id } })
         }
     }
 
@@ -31,7 +31,7 @@ export default function TaskNameDisplay() {
         if (TimerState.status === 'running' && !taskName) {
             const taskName = inputValue ? inputValue : generateDefaultTaskName()
             setTaskName(taskName)
-            TimerDispatch({ type: 'setRunningTimer', payload: taskName })
+            TimerDispatch({ type: 'setRunningTimer', payload: { taskName } })
         }
     }, [TimerState.status])
 
