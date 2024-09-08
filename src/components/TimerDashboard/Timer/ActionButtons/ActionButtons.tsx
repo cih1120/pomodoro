@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import PauseButton from './PauseButton'
 import StartButton from './StartButton/StartButton'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
@@ -14,7 +13,7 @@ export default function ActionButtons({
     handlePause,
     handleRestart,
 }: IActionButtons) {
-    const { state, dispatch } = useTimerStatusContext()
+    const { state } = useTimerStatusContext()
     const timerStatus = state.status
 
     return (

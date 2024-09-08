@@ -9,8 +9,7 @@ import { generateTaskID } from '@/lib/utils'
 
 export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const { state, dispatch } = useTimerStatusContext()
-    const { state: pomodoroState, dispatch: pomodoroDispatch } =
-        usePromodoroContext()
+    const { dispatch: pomodoroDispatch } = usePromodoroContext()
 
     const timerStartAudio = useRef(new Audio(timerStartSound))
     const timerDoneAudio = useRef(new Audio(timerDoneSound))

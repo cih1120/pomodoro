@@ -7,7 +7,7 @@ export default function PauseButton({
     handlePause,
     handleStart,
 }: IActionButtons) {
-    const { state, dispatch } = useTimerStatusContext()
+    const { state } = useTimerStatusContext()
     return (
         <div className="flex w-full items-center justify-center gap-1">
             {state.status === 'pause' ? (

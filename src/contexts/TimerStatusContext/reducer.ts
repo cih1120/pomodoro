@@ -1,4 +1,4 @@
-import { current, produce } from 'immer'
+import { produce } from 'immer'
 import { ITimerStatusContext, TIMER_ACTIONS } from './types'
 import { TimerMode } from '@/lib/types'
 

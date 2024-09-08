@@ -1,4 +1,4 @@
-import { ITask, TimerMode, TimerStatus } from '@/lib/types'
+import { TimerMode, TimerStatus } from '@/lib/types'
 
 export type IRunningTask = { taskId: string } | { taskName: string } | null
 export interface ITimerStatusContext {
