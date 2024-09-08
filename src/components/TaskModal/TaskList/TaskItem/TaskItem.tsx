@@ -54,10 +54,9 @@ export default function TaskItem({ task }: { task: ITask }) {
         number | null
     >(null)
 
-    const remainingPomodoros = useMemo(
-        () => Math.max(0, task.expectedPromodoros - task.currentPromodoros),
-        [task.currentPromodoros, task.expectedPromodoros]
-    )
+    const remainingPomodoros = useMemo(() => {
+        return Math.max(0, task.expectedPromodoros - task.currentPromodoros)
+    }, [task.currentPromodoros, task.expectedPromodoros])
 
     const handleDeleteTask = () => {
         dispatch({ type: 'removeTask', payload: task.taskId })
@@ -72,6 +71,10 @@ export default function TaskItem({ task }: { task: ITask }) {
     }
 
     const handleSaveTask = () => {
+        if (!taskName) {
+            toast('Task Name cannot be empty!')
+            return
+        }
         dispatch({
             type: 'updateTask',
             payload: {
@@ -86,8 +89,8 @@ export default function TaskItem({ task }: { task: ITask }) {
     }
 
     return (
-        <li className="flex w-full border-separate items-center justify-between border-b border-dashed border-accent px-2.5 py-2">
-            <div className="flex items-center gap-2">
+        <li className="flex w-full border-separate flex-wrap items-center justify-between border-b border-dashed border-accent px-2.5 py-2">
+            <div className="flex flex-wrap items-center gap-2 md:flex-nowrap">
                 <TaskStatus isCompleted={remainingPomodoros === 0} />
                 <div className="text-accent-light">
                     <p className="text-xs font-normal">
@@ -106,7 +109,7 @@ export default function TaskItem({ task }: { task: ITask }) {
                         <h4 className="text-sm font-bold">{task.taskName}</h4>
                     )}
                 </div>
-                <ul className="flex">
+                <ul className="flex w-full md:w-auto">
                     {isEditing ? (
                         <RatingsPomodoroList
                             task={task}
@@ -121,7 +124,12 @@ export default function TaskItem({ task }: { task: ITask }) {
                     )}
                 </ul>
             </div>
-            <div className="flex gap-1 text-accent">
+            <div
+                className={cn(
+                    'flex h-11 w-full items-center justify-center gap-1 text-accent',
+                    isEditing ? 'w-full justify-end' : 'md:w-auto'
+                )}
+            >
                 {isEditing ? (
                     <>
                         <Button
