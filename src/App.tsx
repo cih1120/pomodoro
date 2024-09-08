@@ -7,7 +7,7 @@ import ThemeToggle from './components/ui/themeButton'
 
 function App() {
     return (
-        <>
+        <section className="relative flex h-dvh flex-col">
             <Providers>
                 <header className="flex w-full items-center justify-center gap-1 py-6 text-center">
                     <ThemeToggle />
@@ -15,14 +15,14 @@ function App() {
                         Pomodoro
                     </h1>
                 </header>
-                <main>
-                    <section className="flex justify-center">
+                <main className="flex flex-1 items-start justify-center">
+                    <section className="flex px-2">
                         <TimeDashboard />
                     </section>
                 </main>
                 <TaskModal />
             </Providers>
-        </>
+        </section>
     )
 }
 

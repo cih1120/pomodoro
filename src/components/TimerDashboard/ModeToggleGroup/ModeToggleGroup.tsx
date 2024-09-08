@@ -1,7 +1,9 @@
+import { MouseEventHandler } from 'react'
+
 import { Button } from '@/components/ui/button'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
 import { TimerMode } from '@/lib/types'
-import { MouseEventHandler } from 'react'
+
 export default function ModeToggleGroup() {
     const modesArray: { name: string; value: TimerMode }[] = [
         {
@@ -25,7 +27,7 @@ export default function ModeToggleGroup() {
     }
 
     return (
-        <ul className="flex gap-8">
+        <ul className="flex w-full flex-wrap justify-center gap-x-4 px-2 md:gap-x-8">
             {modesArray.map((mode) => {
                 return (
                     <li key={mode.value}>
