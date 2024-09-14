@@ -71,7 +71,7 @@ export default function TaskInput({
                 >
                     <CommandInput
                         value={inputValue}
-                        maxLength={10}
+                        maxLength={16}
                         minLength={1}
                         className="block w-full rounded-none border-b border-dashed border-accent bg-transparent px-2 py-1 text-base text-accent placeholder-primary"
                         onValueChange={setInputValue}

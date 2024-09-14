@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import usePromodoroContext from '@/contexts/PromodoroContext'
-import TaskInput from './TaskInput'
-import { ITask } from '@/lib/types'
 import { X } from 'lucide-react'
+
+import { ITask } from '@/lib/types'
+import { generateDefaultTaskName } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
-import { generateDefaultTaskName } from '@/lib/utils'
+import usePromodoroContext from '@/contexts/PromodoroContext'
+
+import TaskInput from './TaskInput'
 
 export default function TaskNameDisplay() {
     const [taskName, setTaskName] = useState('')

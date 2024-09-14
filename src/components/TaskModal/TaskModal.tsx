@@ -85,7 +85,8 @@ export default function TaskModal() {
                         ? 'bottom-1/2 z-50 translate-y-1/2'
                         : 'bottom-0 translate-y-[90%] hover:translate-y-[88%] md:translate-y-[80%] md:hover:translate-y-[76%]',
                     'absolute left-2/4 flex w-11/12 max-w-6xl -translate-x-1/2 flex-col items-center justify-center transition duration-200 ease-out md:w-8/12',
-                    isTimerStateDefault && 'translate-y-full'
+                    isTimerStateDefault &&
+                        'translate-y-full md:translate-y-full'
                 )}
             >
                 <div

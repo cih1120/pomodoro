@@ -99,6 +99,7 @@ export default function TaskItem({ task }: { task: ITask }) {
                     {isEditing ? (
                         <div className="flex items-center gap-1">
                             <Input
+                                maxLength={16}
                                 type="text"
                                 value={taskName}
                                 onChange={(e) => setTaskName(e.target.value)}
@@ -126,8 +127,8 @@ export default function TaskItem({ task }: { task: ITask }) {
             </div>
             <div
                 className={cn(
-                    'flex h-11 w-full items-center justify-center gap-1 text-accent',
-                    isEditing ? 'w-full justify-end' : 'md:w-auto'
+                    'flex h-11 w-full items-center justify-end gap-1 text-accent',
+                    isEditing ? 'w-full' : 'md:w-auto'
                 )}
             >
                 {isEditing ? (
