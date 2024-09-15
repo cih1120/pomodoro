@@ -1,3 +1,4 @@
+import { Howl } from 'howler'
 import { TimerMode } from '@/lib/types'
 import useTimerStatusContext from '@/contexts/TimerStatusContext'
 import { useEffect, useRef, useState } from 'react'
@@ -11,15 +12,8 @@ export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const { state, dispatch } = useTimerStatusContext()
     const { dispatch: pomodoroDispatch } = usePromodoroContext()
 
-    const timerStartAudio = useRef(new Audio(timerStartSound))
-    const timerDoneAudio = useRef(new Audio(timerDoneSound))
-
-    const playSound = (audio: HTMLAudioElement) => {
-        audio.currentTime = 0
-        audio
-            .play()
-            .catch((error) => console.error('Error playing sound:', error))
-    }
+    const timerStartAudio = useRef(new Howl({ src: [timerStartSound] }))
+    const timerDoneAudio = useRef(new Howl({ src: [timerDoneSound] }))
 
     const modeDurations: Record<TimerMode, number> = {
         focus: 1500, // 25 minutes
@@ -57,7 +51,7 @@ export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     const handleStart = () => {
         dispatch({ type: 'setStatus', payload: 'running' })
         setIsRunning(true)
-        playSound(timerStartAudio.current)
+        timerStartAudio.current.play()
     }
 
     const handlePause = () => {
@@ -72,7 +66,7 @@ export default function useTimer(mode: TimerMode, handleFinish: () => void) {
     }
 
     const handleTimerFinish = () => {
-        playSound(timerDoneAudio.current)
+        timerDoneAudio.current.play()
         dispatch({ type: 'setFinish' })
 
         if (state.mode === 'focus') {
