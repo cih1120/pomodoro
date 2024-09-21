@@ -4,6 +4,7 @@ import TimeDashboard from '@/components/TimerDashboard'
 import Providers from './components/Providers'
 import TaskModal from './components/TaskModal'
 import ThemeToggle from './components/ui/themeButton'
+import MusicPlayer from './components/MusicPlayer'
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     </section>
                 </main>
                 <TaskModal />
+                <MusicPlayer />
             </Providers>
         </section>
     )
