@@ -89,7 +89,7 @@ export default function TaskItem({ task }: { task: ITask }) {
     }
 
     return (
-        <li className="flex w-full border-separate flex-wrap items-center justify-between border-b border-dashed border-accent px-2.5 py-2">
+        <li className="flex w-full border-separate flex-wrap items-center justify-between border-b border-dashed border-accent px-2 py-3">
             <div className="flex flex-wrap items-center gap-2 md:flex-nowrap">
                 <TaskStatus isCompleted={remainingPomodoros === 0} />
                 <div className="text-accent-light">
@@ -97,15 +97,13 @@ export default function TaskItem({ task }: { task: ITask }) {
                         {formatDate(task.createdAt)}
                     </p>
                     {isEditing ? (
-                        <div className="flex items-center gap-1">
-                            <Input
-                                maxLength={16}
-                                type="text"
-                                value={taskName}
-                                onChange={(e) => setTaskName(e.target.value)}
-                                className="text-sm font-bold"
-                            />
-                        </div>
+                        <Input
+                            maxLength={16}
+                            type="text"
+                            value={taskName}
+                            onChange={(e) => setTaskName(e.target.value)}
+                            className="text-sm font-bold"
+                        />
                     ) : (
                         <h4 className="text-sm font-bold">{task.taskName}</h4>
                     )}
@@ -127,8 +125,8 @@ export default function TaskItem({ task }: { task: ITask }) {
             </div>
             <div
                 className={cn(
-                    'flex h-11 w-full items-center justify-end gap-1 text-accent',
-                    isEditing ? 'w-full' : 'md:w-auto'
+                    'ml-auto mt-1 flex h-11 w-auto items-center justify-end gap-1 text-accent',
+                    isEditing ? 'w-full' : 'w-auto'
                 )}
             >
                 {isEditing ? (

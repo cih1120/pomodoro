@@ -98,8 +98,8 @@ export default function TaskModal() {
                         className={cn(isOpen ? 'rotate-180' : '', 'size-4')}
                     />
                 </div>
-                <main className="w-full rounded-2xl border border-x-2 border-b-4 border-border bg-foreground p-3 shadow-solid">
-                    <div className="flex flex-col rounded-xl bg-card px-6 py-2">
+                <main className="w-full rounded-2xl border border-x-2 border-b-4 border-border bg-foreground p-2 shadow-solid">
+                    <div className="flex flex-col rounded-xl bg-card p-2 md:px-6">
                         <div className="flex w-full items-center justify-between border-b border-b-accent px-2 py-2.5">
                             <h4 className="text-lg font-black leading-6 text-accent-light">
                                 Tasks
@@ -134,7 +134,7 @@ export default function TaskModal() {
                                 </SelectContent>
                             </Select>
                         </div>
-                        <div className="h-[45vh] overflow-y-auto">
+                        <div className="h-[50vh] overflow-y-auto">
                             {sortedTasks.length === 0 ? (
                                 <div className="flex h-full flex-col items-center justify-center gap-1 text-center text-accent-light">
                                     <p className="text-3xl font-semibold">

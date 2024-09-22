@@ -12,7 +12,7 @@ const PomodoroIcon = ({ opacity }: { opacity: 'full' | 'half' | 'low' }) => {
 
     return (
         <img
-            className={cn('size-6', opacityClass)}
+            className={cn('size-5 md:size-6', opacityClass)}
             src={Pomodoro}
             alt="Pomodoro"
         />
