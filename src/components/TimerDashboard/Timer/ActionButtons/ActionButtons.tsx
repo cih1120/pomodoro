@@ -14,12 +14,12 @@ export default function ActionButtons({
     handleRestart,
 }: IActionButtons) {
     const { state } = useTimerStatusContext()
-    const timerStatus = state.status
+    const { status: timerStatus, mode } = state
 
     return (
         <div className="flex w-full items-center justify-center">
             {timerStatus === 'default' ? (
-                <StartButton handleStart={handleStart} />
+                <StartButton handleStart={handleStart} mode={mode} />
             ) : (
                 <PauseButton
                     handleStart={handleStart}
